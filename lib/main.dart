@@ -5,6 +5,7 @@ import 'package:bus_hour/models/busModel.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:progress_dialog/progress_dialog.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -31,6 +32,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  static final MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
+    testDevices: APP_ID != null ? [APP_ID] : null,
+    keywords: ['Utilities','Bus','STCP'],
+  );
+
+ 
    final items = new List<BusModel>();
    var searchController= TextEditingController();
    bool isLoading= false;
@@ -100,7 +107,6 @@ showAlertDialog(BuildContext context, String message) {
 }
    @override
   Widget build(BuildContext context) {
-   
     return new Scaffold(
       appBar: new AppBar(
         title: new Text(widget.title),
