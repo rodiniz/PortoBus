@@ -32,12 +32,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  static final MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
-    testDevices: APP_ID != null ? [APP_ID] : null,
-    keywords: ['Utilities','Bus','STCP'],
-  );
-
- 
+   
    final items = new List<BusModel>();
    var searchController= TextEditingController();
    bool isLoading= false;
