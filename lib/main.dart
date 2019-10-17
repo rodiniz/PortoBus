@@ -49,6 +49,8 @@ class _MyHomePageState extends State<MyHomePage> {
          _search(null);
       }      
   }
+
+ 
   void _search(BuildContext context) async {
    
     try{
@@ -60,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
           items.clear();
           items.addAll(list.map((model) => BusModel.fromJson(model)));
           if(items.length==0){
-            showAlertDialog(context, 'Please check if bus stop code is correct.');
+            showAlertDialog('Please check if bus stop code is correct.');
           }
           isLoading=false;
           setState(() {});
@@ -68,12 +70,12 @@ class _MyHomePageState extends State<MyHomePage> {
      );   
     }
     catch(ex){
-      showAlertDialog(context, 'Error getting information:' + ex.toString());
+      showAlertDialog('Error getting information:' + ex.toString());
     }
     
               
   }
-showAlertDialog(BuildContext context, String message) {
+showAlertDialog( String message) {
 
   // set up the button
   Widget okButton = FlatButton(
@@ -85,6 +87,7 @@ showAlertDialog(BuildContext context, String message) {
 
   // set up the AlertDialog
   AlertDialog alert = AlertDialog(
+
     title: Text("Porto Bus Hour"),
     content: Text(message),
     actions: [
@@ -104,7 +107,15 @@ showAlertDialog(BuildContext context, String message) {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text(widget.title),
+        title: new Text(widget.title),   
+        actions: <Widget>[
+            FlatButton(
+              textColor: Colors.white,
+              onPressed: () {showAlertDialog('This app was written by Rodrigo Diniz');},
+              child: Text("About"),
+              shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
+            ),
+        ],     
       ),
       body: Container(
         child: Column(
@@ -145,6 +156,7 @@ showAlertDialog(BuildContext context, String message) {
         child: Icon(Icons.search),
         backgroundColor: Colors.pink,
       ),
+      
     );
   }
 
