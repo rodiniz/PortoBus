@@ -1,4 +1,7 @@
-on: tag
+on:  
+ push:
+    tags:
+     - '*'
 name: Build and Release apk
 jobs:
   build:
