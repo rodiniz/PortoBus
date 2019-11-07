@@ -24,25 +24,26 @@ class _StockListState extends State<BusList> {
   ListView _buildStockList(context, List<BusModel> stocks) {
     return new ListView.builder(
       itemCount: stocks.length,
-     itemBuilder: (context, index) {
-            var item=stocks[index];
-            if(index==0){
+      itemBuilder: (context, index) {
+           var item=stocks[index];  
+           if(index==0){
                 return ListTile(
-                title :new Text("Results") ,                    
-                                  
-                subtitle: new Text(item.busName + '\t\t' + item.nextHour.toString()+ '\t\t' + item.waitTime.toString()),                       
-                     
-                 
+                title :new Text("Results")                    
               );
             }
-            else {
-                 return ListTile(                         
-                                          
-                        subtitle: new Text(item.busName + '\t\t' + item.nextHour.toString()+ '\t\t' + item.waitTime.toString()),                       
-                            
-                        
-                      );                     
-                
+            else{
+            return Container(
+               child: Table(  border: TableBorder.all(width: 0.0),
+                  children: [                    
+                      TableRow(children: [
+                        TableCell(child: new Text(item.busName)),
+                        TableCell(child: new Text(item.nextHour.toString())),
+                        TableCell(child: new Text(item.waitTime.toString())),
+                      ])
+                      ]
+             
+                    ),
+                  );
             }
       },
     );
