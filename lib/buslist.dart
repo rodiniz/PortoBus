@@ -27,9 +27,21 @@ class _StockListState extends State<BusList> {
       itemBuilder: (context, index) {
            var item=stocks[index];  
            if(index==0){
-                return ListTile(
-                title :new Text("Results")                    
-              );
+                var listTile = ListTile(
+                  title :new Text("Results"),
+                  subtitle:  Container(
+                      child: Table(  border: TableBorder.all(width: 0.0),
+                      children: [                    
+                        TableRow(children: [
+                          TableCell(child: new Text(item.busName)),
+                          TableCell(child: new Text(item.nextHour.toString())),
+                          TableCell(child: new Text(item.waitTime.toString())),
+                        ])
+                        ]
+              
+                      )),                    
+                );
+                return listTile;
             }
             else{
             return Container(
